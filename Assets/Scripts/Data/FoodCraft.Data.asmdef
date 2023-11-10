@@ -1,0 +1,16 @@
+{
+    "name": "FoodCraft.Data",
+    "rootNamespace": "FoodCraft.Data",
+    "references": [
+        "GUID:8e255bf67ae274e47ada713207795e16"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

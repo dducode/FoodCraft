@@ -1,0 +1,17 @@
+{
+    "name": "FoodCraft.Core",
+    "rootNamespace": "FoodCraft.Core",
+    "references": [
+        "GUID:165c95d608cdbd645a40e7eeadeba61a",
+        "GUID:8e255bf67ae274e47ada713207795e16"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

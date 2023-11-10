@@ -1,0 +1,17 @@
+{
+    "name": "FoodCraft.Services",
+    "rootNamespace": "FoodCraft.Services",
+    "references": [
+        "GUID:feb57b34836b5734582ed876ba4f5b41",
+        "GUID:e1e75a12f58cd0b429ed5c914886b961"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

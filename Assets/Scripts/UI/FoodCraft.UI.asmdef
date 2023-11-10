@@ -1,0 +1,20 @@
+{
+    "name": "FoodCraft.UI",
+    "rootNamespace": "FoodCraft.UI",
+    "references": [
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:feb57b34836b5734582ed876ba4f5b41",
+        "GUID:8e255bf67ae274e47ada713207795e16",
+        "GUID:165c95d608cdbd645a40e7eeadeba61a",
+        "GUID:e23675680ef3c96439052c34efcd3573"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
