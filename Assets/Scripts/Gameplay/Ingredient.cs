@@ -29,6 +29,7 @@ namespace FoodCraft.Gameplay {
 
 
         private void FixedUpdate () {
+            // Follow cursor when the player hold this
             if (m_followCursor) {
                 Vector3 position = m_mainCamera.ScreenToWorldPoint(Input.mousePosition);
                 position.z = 0;

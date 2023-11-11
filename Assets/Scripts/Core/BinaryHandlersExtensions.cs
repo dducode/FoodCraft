@@ -9,9 +9,9 @@ namespace FoodCraft.Core {
         public static void Write (this BinaryWriter writer, DishData data) {
             writer.Write(data.name);
             writer.Write(data.score);
-            writer.Write(data.dish.Count);
+            writer.Write(data.compound.Count);
 
-            foreach (KeyValuePair<IngredientType, int> keyValuePair in data.dish) {
+            foreach (KeyValuePair<IngredientType, int> keyValuePair in data.compound) {
                 writer.Write((int)keyValuePair.Key);
                 writer.Write(keyValuePair.Value);
             }
@@ -30,7 +30,7 @@ namespace FoodCraft.Core {
             for (var i = 0; i < count; i++)
                 dish.Add((IngredientType)reader.ReadInt32(), reader.ReadInt32());
 
-            data.dish = dish;
+            data.compound = dish;
 
             return data;
         }

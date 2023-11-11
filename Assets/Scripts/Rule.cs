@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace FoodCraft {
 
+    /// <summary>
+    /// Rule for preparing a dish, works together with the dish menu
+    /// </summary>
     public struct Rule {
 
         public IngredientType ingredientsType;

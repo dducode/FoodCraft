@@ -26,6 +26,9 @@ namespace FoodCraft.UI {
         private Button restartButton;
 
 
+        /// <summary>
+        /// Call this to pass dependencies to the class
+        /// </summary>
         public void Construct (Player player) {
             player.score.OnValueChanged += score => this.score.text = $"Счёт: {score}";
             player.lastDishData.OnValueChanged += data => lastDish.text = $"Последнее блюдо: {BuildDishRow(data)}";
@@ -42,7 +45,7 @@ namespace FoodCraft.UI {
         private string BuildDishRow (DishData data) {
             var builder = new StringBuilder();
 
-            foreach (KeyValuePair<IngredientType, int> dishData in data.dish) {
+            foreach (KeyValuePair<IngredientType, int> dishData in data.compound) {
                 builder.Append($"{dishData.Value} ");
 
                 switch (dishData.Key) {

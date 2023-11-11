@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace FoodCraft.Services {
 
+    /// <summary>
+    /// Use the container to resolve dependencies
+    /// </summary>
     public class DIContainer : MonoBehaviour {
 
         [SerializeField]

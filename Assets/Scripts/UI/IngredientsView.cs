@@ -15,6 +15,9 @@ namespace FoodCraft.UI {
         private Sprite defaultIcon;
 
 
+        /// <summary>
+        /// Call this to pass dependencies to the class
+        /// </summary>
         public void Construct (Cauldron cauldron) {
             cauldron.OnPutIngredient += UpdateView;
             cauldron.OnCook += ClearView;

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using FoodCraft.Core;
 using FoodCraft.Data;
 using UnityEngine;
@@ -15,19 +14,13 @@ namespace FoodCraft.Gameplay {
         [SerializeField]
         private float cookingTime = 2;
 
-        private IngredientsScoreTable m_scoreTable;
-        private Dictionary<Rule, string> m_menu;
 
-
+        /// <summary>
+        /// Call this to pass dependencies to the class
+        /// </summary>
         public void Construct (Cauldron cauldron) {
             cauldron.OnPutIngredient += OnPutIngredient;
             cauldron.OnCook += OnCook;
-        }
-
-
-        private void Awake () {
-            m_scoreTable = Game.GetIngredientsTable();
-            m_menu = Game.GetIngredientsMenu();
         }
 
 
@@ -39,8 +32,12 @@ namespace FoodCraft.Gameplay {
         private void Update () {
             if (Input.GetKey(KeyCode.R))
                 Game.Restart();
+            if (Input.GetKey(KeyCode.Escape))
+                Game.Exit();
             if (Input.GetKey(KeyCode.L))
                 LoadData();
+            if (Input.GetKey(KeyCode.T))
+                Game.GenerateAllCombinations();
         }
 
 
@@ -53,13 +50,13 @@ namespace FoodCraft.Gameplay {
 
 
         private void OnCook (Dictionary<IngredientType, int> dish) {
-            int totalScore = CalculateTotalScore(dish);
+            int totalScore = ScoreCounter.CalculateTotalScore(dish);
             score.Value += totalScore;
 
             lastDishData.Value = new DishData {
-                dish = dish,
+                compound = dish,
                 score = totalScore,
-                name = FindDishNameInMenu(dish)
+                name = Menu.FindDishName(dish)
             };
 
             if (lastDishData.Value.score > bestDishData.Value.score)
@@ -84,86 +81,6 @@ namespace FoodCraft.Gameplay {
                 lastDishData.Value = reader.ReadDishData();
                 bestDishData.Value = reader.ReadDishData();
             });
-        }
-
-
-        private string FindDishNameInMenu (Dictionary<IngredientType, int> dish) {
-            foreach (KeyValuePair<IngredientType, int> ingredientsData in dish)
-                foreach (KeyValuePair<Rule, string> menuRow in m_menu)
-                    if (menuRow.Key == ingredientsData)
-                        return menuRow.Value;
-
-            return !dish.ContainsKey(IngredientType.Meat) ? "Овощное рагу" : "Суп";
-        }
-
-
-        private int CalculateTotalScore (Dictionary<IngredientType, int> dish) {
-            float totalScore = 0;
-
-            foreach ((IngredientType ingredientsType, int ingredientsCount) in dish) {
-                float multiplier = CalculateMultiplier(ingredientsCount);
-                totalScore += CalculateScore(ingredientsType, ingredientsCount, multiplier);
-            }
-
-            return (int)totalScore;
-        }
-
-
-        private float CalculateMultiplier (int ingredientsCount) {
-            if (ingredientsCount < 1)
-                throw new ArgumentOutOfRangeException(nameof(ingredientsCount));
-
-            float multiplier;
-
-            switch (ingredientsCount) {
-                case 1 or 2:
-                    multiplier = 2;
-                    break;
-                case 3:
-                    multiplier = 1.5f;
-                    break;
-                case 4:
-                    multiplier = 1.25f;
-                    break;
-                default:
-                    multiplier = 1;
-                    break;
-            }
-
-            return multiplier;
-        }
-
-
-        private float CalculateScore (IngredientType ingredientsType, int ingredientsCount, float multiplier) {
-            if (ingredientsCount < 1)
-                throw new ArgumentOutOfRangeException(nameof(ingredientsCount));
-            if (multiplier < 1)
-                throw new ArgumentOutOfRangeException(nameof(multiplier));
-
-            float calculatedScore;
-
-            switch (ingredientsType) {
-                case IngredientType.Meat:
-                    calculatedScore = m_scoreTable.meatScores;
-                    break;
-                case IngredientType.Onion:
-                    calculatedScore = m_scoreTable.onionScores;
-                    break;
-                case IngredientType.Pepper:
-                    calculatedScore = m_scoreTable.pepperScores;
-                    break;
-                case IngredientType.Carrot:
-                    calculatedScore = m_scoreTable.carrotScores;
-                    break;
-                case IngredientType.Potato:
-                    calculatedScore = m_scoreTable.potatoScores;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            calculatedScore *= multiplier * ingredientsCount;
-            return calculatedScore;
         }
 
     }

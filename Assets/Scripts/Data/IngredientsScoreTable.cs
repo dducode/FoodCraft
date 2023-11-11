@@ -2,6 +2,9 @@
 
 namespace FoodCraft.Data {
 
+    /// <summary>
+    /// Contains the value of each ingredient
+    /// </summary>
     [Serializable]
     public struct IngredientsScoreTable {
 
