@@ -11,31 +11,31 @@ namespace FoodCraft.Core {
                     ingredientsType = IngredientType.Meat,
                     ingredientsCount = new Range(5, 5)
                 },
-                "Мясо в собственном соку"
+                "Meat in its own juice"
             }, {
                 new Rule {
                     ingredientsType = IngredientType.Meat,
                     ingredientsCount = new Range(4, 4)
                 },
-                "Мясо с гарниром"
+                "Meat with side dish"
             }, {
                 new Rule {
                     ingredientsType = IngredientType.Meat,
                     ingredientsCount = new Range(2, 3)
                 },
-                "Рагу"
+                "Stew"
             }, {
                 new Rule {
                     ingredientsType = IngredientType.Onion,
                     ingredientsCount = new Range(4, 5)
                 },
-                "Луковый суп"
+                "Onion soup"
             }, {
                 new Rule {
                     ingredientsType = IngredientType.Potato,
                     ingredientsCount = new Range(4, 5)
                 },
-                "Картофельное пюре"
+                "Mashed potatoes"
             }
         };
 
@@ -46,7 +46,7 @@ namespace FoodCraft.Core {
                     if (menuRow.Key == ingredientsData)
                         return menuRow.Value;
 
-            return !dish.ContainsKey(IngredientType.Meat) ? "Овощное рагу" : "Суп";
+            return !dish.ContainsKey(IngredientType.Meat) ? "Vegetable stew" : "Soup";
         }
 
     }

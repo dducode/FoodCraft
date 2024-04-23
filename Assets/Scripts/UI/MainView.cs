@@ -30,9 +30,9 @@ namespace FoodCraft.UI {
         /// Call this to pass dependencies to the class
         /// </summary>
         public void Construct (Player player) {
-            player.score.OnValueChanged += score => this.score.text = $"Счёт: {score}";
-            player.lastDishData.OnValueChanged += data => lastDish.text = $"Последнее блюдо: {BuildDishRow(data)}";
-            player.bestDishData.OnValueChanged += data => bestDish.text = $"Лучшее блюдо: {BuildDishRow(data)}";
+            player.score.OnValueChanged += score => this.score.text = $"Score: {score}";
+            player.lastDishData.OnValueChanged += data => lastDish.text = $"Latest dish: {BuildDishRow(data)}";
+            player.bestDishData.OnValueChanged += data => bestDish.text = $"Best dish: {BuildDishRow(data)}";
         }
 
 
@@ -50,19 +50,19 @@ namespace FoodCraft.UI {
 
                 switch (dishData.Key) {
                     case IngredientType.Meat:
-                        builder.Append("мясо");
+                        builder.Append("meat");
                         break;
                     case IngredientType.Onion:
-                        builder.Append("лук");
+                        builder.Append("onion");
                         break;
                     case IngredientType.Pepper:
-                        builder.Append("перец");
+                        builder.Append("pepper");
                         break;
                     case IngredientType.Carrot:
-                        builder.Append("мокровь");
+                        builder.Append("carrot");
                         break;
                     case IngredientType.Potato:
-                        builder.Append("картофель");
+                        builder.Append("potato");
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
